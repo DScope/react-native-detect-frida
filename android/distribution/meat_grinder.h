@@ -4,6 +4,8 @@
 #include <sys/system_properties.h>
 #include <sys/types.h>
 #include <android/log.h>
+#include <android/api-level.h>
+#include <sys/system_properties.h>
 #include <jni.h>
 
 #include <string.h>

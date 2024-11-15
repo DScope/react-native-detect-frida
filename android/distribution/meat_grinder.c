@@ -97,6 +97,13 @@ isBadPropertyState(const char *key, const char *badValue, bool isObligatoryPrope
     return result;
 }
 
+static int getApiVersion(void) {
+    char sdk_version_str[PROP_VALUE_MAX];
+
+    __system_property_get("ro.build.version.release", sdk_version_str);
+    return atoi(sdk_version_str);
+}
+
 bool isDetectedTestKeys() {
     const char *TEST_KEYS_VALUE = "test-keys";
     return isBadPropertyState(ANDROID_OS_BUILD_TAGS, TEST_KEYS_VALUE, true, false);
@@ -141,6 +148,10 @@ bool isFoundWrongPathPermission() {
 
 
 bool isFoundDangerousProps() {
+    if (getApiVersion() >= __ANDROID_API_U__) {
+        return false;
+    }
+
     const char *BAD_DEBUGGABLE_VALUE = "1";
     const char *BAD_SECURE_VALUE = "0";
     const char *BAD_SYS_INITD_VALUE = "1";
