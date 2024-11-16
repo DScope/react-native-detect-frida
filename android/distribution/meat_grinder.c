@@ -100,7 +100,7 @@ isBadPropertyState(const char *key, const char *badValue, bool isObligatoryPrope
 static int getApiVersion(void) {
     char sdk_version_str[PROP_VALUE_MAX];
 
-    __system_property_get("ro.build.version.release", sdk_version_str);
+    __system_property_get("ro.build.version.sdk", sdk_version_str);
     return atoi(sdk_version_str);
 }
 
