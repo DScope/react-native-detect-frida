@@ -148,7 +148,7 @@ bool isFoundWrongPathPermission() {
 
 
 bool isFoundDangerousProps() {
-    if (getApiVersion() >= __ANDROID_API_U__) {
+    if (getApiVersion() >= 34) {
         return false;
     }
 
